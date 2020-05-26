@@ -1,0 +1,2 @@
+class Ook < ApplicationRecord
+end
