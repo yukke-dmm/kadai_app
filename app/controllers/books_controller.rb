@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+# topページの代わりで使っています
   def new
   end
 
@@ -19,7 +20,9 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
   	  redirect_to book_path(book)
     else
-      render action: :new
+      @books = Book.all
+      @book = book
+      render action: :index
     end
   end
 
@@ -33,14 +36,16 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
   	  redirect_to book_path
     else
-      render action: :new
+      @books = Book.all
+      @book = book
+      render action: :index
     end
   end
 
   def destroy
   	book = Book.find(params[:id])
   	book.destroy
-  	redirect_to books_path
+  	redirect_to book_path
   end
 
   private
