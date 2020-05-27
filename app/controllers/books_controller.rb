@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-# topページの代わりで使っています
+
+# topページの代わり
   def new
   end
 
@@ -44,8 +45,14 @@ class BooksController < ApplicationController
 
   def destroy
   	book = Book.find(params[:id])
-  	book.destroy
-  	redirect_to book_path
+  	if book.destroy
+      flash[:notice] = "Book was successfully destroyed."
+      redirect_to books_path
+    else
+      @books = Book.all
+      @book = book
+      render action: :index
+    end
   end
 
   private
