@@ -98,6 +98,9 @@ td {
     padding-left: 5px;
     padding-right: 5px;
 }
+.field_with_errors #book_title, .field_with_errors #book_body {
+    border: 2px solid red;
+}
 /*show画面*/
 .notice{
 	color: green;
